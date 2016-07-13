@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 function cleanUp() {
 
   // WRAP LIST TEXT IN A P, AND APPLY FUNCTIONALITY TABS
@@ -26,4 +28,4 @@ $("li").on("click", ".del", function() {
    $(".panel ul").append("<li>hi kids</li>");
 });*/
 
-
+});
