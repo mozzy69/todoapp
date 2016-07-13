@@ -18,12 +18,9 @@ $("li").on("click", ".check", function() {
 $("li").on("click", ".del", function() {
    console.log("del");
    $(this).parent().parent().fadeOut("fast");
-     
+   var checkNum = $(this).parent().parent().index(); 
+   $.post('inc/delete.php', 'val=' + checkNum);
 });
 
-/*$("form").on("click", "button", function(){
-   console.log("add"); 
-   $(".panel ul").append("<li>hi kids</li>");
-});*/
 
 

@@ -56,7 +56,7 @@ $todo_res = mysqli_query($db_server, "SELECT * FROM list_items");
 if(!$todo_res)die("Database access failed :" . mysqli_error());
 
 //require 'inc/updateListID.php'; 
-$tempNum=1;
+$tempNum=0;
 
 if (mysqli_num_rows($todo_res) > 0) {
     // output data of each row
@@ -67,7 +67,7 @@ if (mysqli_num_rows($todo_res) > 0) {
 	       	       WHERE ListItemID='$ListIDCount' ";
 	
 	if (mysqli_query($db_server, $sql_listID)) {
-    		echo "New record created successfully";
+    		//echo "New record created successfully";
 		$tempNum++;
 		unset($sql_listID);
 	} else {
@@ -88,7 +88,7 @@ if (mysqli_num_rows($todo_res) > 0) {
     
  <form class="form-inline" role="form" action="index.php" method="post">
       
-    <input type="text" class="form-control" name="add" id="add">
+    <input type="text" class="form-control" name="add" id="addID">
   
   <button type="submit" class="btn btn-default">Add</button>
 </form>    

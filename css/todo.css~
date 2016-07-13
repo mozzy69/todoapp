@@ -18,8 +18,8 @@ ul p{
     display: inline;
 }
 
-form name{
-    width: 83%;
+#add{
+    width: 83%;	
 }
 
 form button{
@@ -29,4 +29,5 @@ form button{
 
 form input{
     float: left;
+    
 }

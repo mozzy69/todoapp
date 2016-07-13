@@ -63,11 +63,12 @@ if (mysqli_num_rows($todo_res) > 0) {
     while($row = mysqli_fetch_assoc($todo_res)) {
         echo "<li>" . $row["ListText"]. "</li>";
 	$ListIDCount = $row["ListItemID"];
-	$sql_listID = "UPDATE list_items SET ListID='$tempNum++'
+	$sql_listID = "UPDATE list_items SET ListID='$tempNum'
 	       	       WHERE ListItemID='$ListIDCount' ";
 	
 	if (mysqli_query($db_server, $sql_listID)) {
-    		echo "New record created successfully";
+    		//echo "New record created successfully";
+		$tempNum++;
 		unset($sql_listID);
 	} else {
     		echo "Error: " . $sql_listID . "<br>" . mysqli_error($db_server);
@@ -87,7 +88,7 @@ if (mysqli_num_rows($todo_res) > 0) {
     
  <form class="form-inline" role="form" action="index.php" method="post">
       
-    <input type="text" class="form-control" name="add" id="add">
+    <input type="text" class="form-control" name="add" id="addID">
   
   <button type="submit" class="btn btn-default">Add</button>
 </form>    

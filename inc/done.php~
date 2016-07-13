@@ -1,6 +1,8 @@
 <?php
-
+require_once 'connect.php';
 $checkNumA = $_POST['val'];
+
+echo $checkNumA;
 
 $sql = "UPDATE list_items SET ListItemDone='1'
 	WHERE ListItemID='$checkNumA' ";
