@@ -49,21 +49,34 @@ require_once 'inc/add.php';
  <ul>
 
 <?php
+
 $todo_res = mysqli_query($db_server, "SELECT * FROM list_items");
 
 //check sucess of building resource
 if(!$todo_res)die("Database access failed :" . mysqli_error());
 
+//require 'inc/updateListID.php'; 
+$tempNum=1;
+
 if (mysqli_num_rows($todo_res) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($todo_res)) {
         echo "<li>" . $row["ListText"]. "</li>";
+	$ListIDCount = $row["ListItemID"];
+	$sql_listID = "UPDATE list_items SET ListID='$tempNum++'
+	       	       WHERE ListItemID='$ListIDCount' ";
+	
+	if (mysqli_query($db_server, $sql_listID)) {
+    		echo "New record created successfully";
+		unset($sql_listID);
+	} else {
+    		echo "Error: " . $sql_listID . "<br>" . mysqli_error($db_server);
+	}	
+
     }
 } else {
     echo "0 results";
 }
-
-
 
 ?>
 
