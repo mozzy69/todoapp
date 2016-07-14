@@ -13,12 +13,10 @@ if (isset($_POST['add']))
 {
 	//attempt to remove html injection and other hacking attempts
 	$listTextClean = sanitizeString($_POST['add']);
-	//echo $listTextClean;
-	//echo $_POST['add'];
-	
+	//Query to Add new entry into table
 	$sql = "INSERT INTO list_items (ListText)
 	VALUES ('$listTextClean')";
-
+	//Execute query and validate success
 	if (mysqli_query($db_server, $sql)) {
     		//echo "New record created successfully";
 		unset($sql);

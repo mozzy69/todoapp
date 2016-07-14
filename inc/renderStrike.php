@@ -1,7 +1,7 @@
 <?php
 require_once 'connect.php';
 
-$result = mysqli_query($db_server, "SELECT * FROM list_items");
+$result = mysqli_query($db_server, "SELECT * FROM list_items ORDER BY ListItemID DESC");
 
 $tempNum=0;
 if (mysqli_num_rows($result) > 0) {

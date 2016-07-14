@@ -1,8 +1,8 @@
 <?php 
-
+//Login Data
 require_once 'inc/query.php';
+//The Add List Item functionallity
 require_once 'inc/add.php'; 
-
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +56,7 @@ $todo_res = mysqli_query($db_server, "SELECT * FROM list_items");
 if(!$todo_res)die("Database access failed :" . mysqli_error());
 
 //require 'inc/updateListID.php'; 
-$tempNum=1;
+$tempNum=0;
 
 if (mysqli_num_rows($todo_res) > 0) {
     // output data of each row

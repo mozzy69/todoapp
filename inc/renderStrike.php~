@@ -3,8 +3,6 @@ require_once 'connect.php';
 
 $result = mysqli_query($db_server, "SELECT * FROM list_items");
 
-//$row = mysqli_fetch_row($result);
-
 $tempNum=0;
 if (mysqli_num_rows($result) > 0) {
     $strikeArr = array();	

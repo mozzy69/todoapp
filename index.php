@@ -1,8 +1,8 @@
 <?php 
-
+//Login Data
 require_once 'inc/query.php';
+//The Add List Item functionallity
 require_once 'inc/add.php'; 
-
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ require_once 'inc/add.php';
 
 <?php
 
-$todo_res = mysqli_query($db_server, "SELECT * FROM list_items");
+$todo_res = mysqli_query($db_server, "SELECT * FROM list_items ORDER BY ListItemID DESC");
 
 //check sucess of building resource
 if(!$todo_res)die("Database access failed :" . mysqli_error());
