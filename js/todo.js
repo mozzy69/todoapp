@@ -1,10 +1,11 @@
 function cleanUp() {
 
-  // WRAP LIST TEXT IN A P, AND APPLY FUNCTIONALITY TABS
-  $(".panel li")
+// WRAP LIST TEXT IN A P, AND APPLY FUNCTIONALITY TABS
+$(".panel li")
     .wrapInner("<p>")
     .prepend("<div class=\"btn-group\"><button type=\"button\" class=\"btn btn-primary check\"><span class=\"glyphicon glyphicon-ok\"></span></button><button type=\"button\" class=\"btn btn-primary del\"><span class=\"glyphicon glyphicon-remove\"></span></button></div>");
 
+//check if ListItemDone and render strike-through when needed
 $.ajax({
     type: "POST",
     url:"inc/renderStrike.php",
@@ -18,17 +19,16 @@ $.ajax({
 		$(".panel li:eq(" + i + ")").find("p").css("text-decoration","line-through");
 		}else{
 		$(".panel li:eq(" + i + ")").find("p").css("text-decoration","none");	
-	}
-	}
-	
-    }
+		}
+	}//end for
+    }//end success function
 });
 
-};
+};//end cleanup main function
 
+//Check status of ListItemDone and render strike-through if needed
 $("li").on("click", ".check", function() {
-   //console.log("click");
-   
+   //Get li index value from DOM
    var checkNum = $(this).parent().parent().index();   
 
    $.ajax({
@@ -43,16 +43,17 @@ $("li").on("click", ".check", function() {
 	}else{
 		$(".panel li:eq(" + checkNum + ")").find("p").css("text-decoration","none");	
 	}
-    }
-}); 
-   //console.log();
+    }//end success function
+   });//end ajax call 
   	 
-});
+});//end click for done functionallity
 
+//Delete list items
 $("li").on("click", ".del", function() {
-   //console.log("del");
+   //Remove entry from DOM
    $(this).parent().parent().fadeOut("fast");
-   var checkNum = $(this).parent().parent().index(); 
+   var checkNum = $(this).parent().parent().index();
+   //Remove entry from database	 
    $.post('inc/delete.php', 'val=' + checkNum);
 });
 
